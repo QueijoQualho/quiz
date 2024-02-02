@@ -26,7 +26,7 @@ class _QuizScreenState extends State<QuizScreen> {
     Questions(questionText: "oie", questionAnswer: false),
     Questions(questionText: "asdas", questionAnswer: false)
   ];
-  
+
   int i = 0;
 
   @override
@@ -55,6 +55,19 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (i == questions.length - 1) {
+                      if (scoreIcons.length < questions.length) {
+                        if (questions[i].questionAnswer) {
+                          setState(() {
+                            scoreIcons.add(
+                                const Icon(Icons.done, color: Colors.green));
+                          });
+                        } else {
+                          setState(() {
+                            scoreIcons.add(
+                                const Icon(Icons.close, color: Colors.red));
+                          });
+                        }
+                      }
                       return;
                     }
 
@@ -87,6 +100,19 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (i == questions.length - 1) {
+                        if (scoreIcons.length < questions.length) {
+                          if (questions[i].questionAnswer) {
+                            setState(() {
+                              scoreIcons.add(
+                                  const Icon(Icons.done, color: Colors.green));
+                            });
+                          } else {
+                            setState(() {
+                              scoreIcons.add(
+                                  const Icon(Icons.close, color: Colors.red));
+                            });
+                          }
+                        }
                         return;
                       }
 
