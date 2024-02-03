@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/models/question.dart';
+import 'package:quiz/view/result_sceen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
-}
-
-class Questions {
-  String questionText;
-  bool questionAnswer;
-
-  Questions({
-    required this.questionText,
-    required this.questionAnswer,
-  });
 }
 
 class _QuizScreenState extends State<QuizScreen> {
@@ -24,10 +16,41 @@ class _QuizScreenState extends State<QuizScreen> {
         questionText: "Qual foi o primeiro homem a pisar na Lua",
         questionAnswer: true),
     Questions(questionText: "oie", questionAnswer: false),
-    Questions(questionText: "asdas", questionAnswer: false)
+    Questions(questionText: "asdas", questionAnswer: false),
+    Questions(questionText: "aaaaa", questionAnswer: true),
+    Questions(questionText: "sadasfasf", questionAnswer: true)
   ];
 
   int i = 0;
+  int score = 0;
+
+  void processAnswer(bool userAnswer) {
+    bool isCorrect = questions[i].questionAnswer == userAnswer;
+
+    setState(() {
+      scoreIcons.add(
+        Icon(
+          isCorrect ? Icons.done : Icons.close,
+          color: isCorrect ? Colors.green : Colors.red,
+        ),
+      );
+
+      if (isCorrect) {
+        score++;
+      }
+
+      if (i == questions.length - 1) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ResultScreen(
+                    score: score, totalQuestions: questions.length)));
+        return;
+      }
+
+      i++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,38 +76,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: ElevatedButton(
-                  onPressed: () {
-                    if (i == questions.length - 1) {
-                      if (scoreIcons.length < questions.length) {
-                        if (questions[i].questionAnswer) {
-                          setState(() {
-                            scoreIcons.add(
-                                const Icon(Icons.done, color: Colors.green));
-                          });
-                        } else {
-                          setState(() {
-                            scoreIcons.add(
-                                const Icon(Icons.close, color: Colors.red));
-                          });
-                        }
-                      }
-                      return;
-                    }
-
-                    if (questions[i].questionAnswer) {
-                      setState(() {
-                        scoreIcons
-                            .add(const Icon(Icons.done, color: Colors.green));
-                      });
-                    } else {
-                      setState(() {
-                        scoreIcons
-                            .add(const Icon(Icons.close, color: Colors.red));
-                      });
-                    }
-
-                    i++;
-                  },
+                  onPressed: () => processAnswer(true),
                   child: const Text('True'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.green,
@@ -98,38 +90,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (i == questions.length - 1) {
-                        if (scoreIcons.length < questions.length) {
-                          if (questions[i].questionAnswer) {
-                            setState(() {
-                              scoreIcons.add(
-                                  const Icon(Icons.done, color: Colors.green));
-                            });
-                          } else {
-                            setState(() {
-                              scoreIcons.add(
-                                  const Icon(Icons.close, color: Colors.red));
-                            });
-                          }
-                        }
-                        return;
-                      }
-
-                      if (!questions[i].questionAnswer) {
-                        setState(() {
-                          scoreIcons
-                              .add(const Icon(Icons.done, color: Colors.green));
-                        });
-                      } else {
-                        setState(() {
-                          scoreIcons
-                              .add(const Icon(Icons.close, color: Colors.red));
-                        });
-                      }
-
-                      i++;
-                    },
+                    onPressed: () => processAnswer(true),
                     child: const Text('False'),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.redAccent,
@@ -140,7 +101,7 @@ class _QuizScreenState extends State<QuizScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: scoreIcons,
-            )
+            ),
           ],
         ));
   }
