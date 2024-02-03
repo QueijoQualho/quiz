@@ -11,9 +11,15 @@ class ResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     void reset() {
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => QuizScreen()));
+          context, MaterialPageRoute(builder: (context) => const QuizScreen()));
+    }
+
+    Color backgroundColor;
+     
+    if (cor == Colors.red) {
+      backgroundColor = Color.fromARGB(255, 231, 149, 149);
+    } else {
+      backgroundColor = Color.fromARGB(255, 149, 231, 174);
     }
 
     return Column(
@@ -24,6 +30,7 @@ class ResultCard extends StatelessWidget {
             flex: 4,
             child: Center(
               child: Container(
+                color: backgroundColor,
                 height: MediaQuery.of(context).size.height * 0.10,
                 width: double.infinity,
                 child: Center(

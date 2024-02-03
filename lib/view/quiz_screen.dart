@@ -13,12 +13,41 @@ class _QuizScreenState extends State<QuizScreen> {
   List<Icon> scoreIcons = [];
   List<Questions> questions = [
     Questions(
-        questionText: "Qual foi o primeiro homem a pisar na Lua",
+        questionText: "A teoria da relatividade foi proposta por Isaac Newton",
+        questionAnswer: false),
+    Questions(
+        questionText: "A inteligência artificial pode sentir emoções",
+        questionAnswer: false),
+    Questions(
+        questionText:
+            "A programação em lógica difusa é uma abordagem para resolver problemas complexos",
         questionAnswer: true),
-    Questions(questionText: "oie", questionAnswer: false),
-    Questions(questionText: "asdas", questionAnswer: false),
-    Questions(questionText: "aaaaa", questionAnswer: true),
-    Questions(questionText: "sadasfasf", questionAnswer: true)
+    Questions(
+        questionText:
+            "A quantidade de números irracionais é maior do que os números racionais",
+        questionAnswer: true),
+    Questions(
+        questionText: "A revolução industrial teve início no século XVIII",
+        questionAnswer: true),
+    Questions(
+        questionText:
+            "A energia escura é responsável pela expansão acelerada do universo",
+        questionAnswer: true),
+    Questions(
+        questionText:
+            "O ácido desoxirribonucleico (DNA) está presente apenas em células animais",
+        questionAnswer: false),
+    Questions(
+        questionText:
+            "O método científico é uma abordagem infalível para obter conhecimento absoluto",
+        questionAnswer: false),
+    Questions(
+        questionText:
+            "A teoria do caos afirma que sistemas complexos são totalmente previsíveis",
+        questionAnswer: false),
+    Questions(
+        questionText: "O número pi (π) é uma constante irracional",
+        questionAnswer: true),
   ];
 
   int i = 0;
@@ -90,7 +119,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: ElevatedButton(
-                    onPressed: () => processAnswer(true),
+                    onPressed: () => processAnswer(false),
                     child: const Text('False'),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.redAccent,

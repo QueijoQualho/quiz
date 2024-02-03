@@ -19,7 +19,7 @@ class _ResultScreenState extends State<ResultScreen> {
   Color determineColor() {
     double numericScore = double.parse(
         widget.score.toString()); // Convert score to a numerical type
-    if (numericScore > (80 * widget.totalQuestions) / 100) {
+    if (numericScore >= (60 * widget.totalQuestions) / 100) {
       return Colors.green;
     } else {
       return Colors.red;
