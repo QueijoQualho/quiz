@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/models/question.dart';
-import 'package:quiz/view/result_sceen.dart';
+import 'package:quiz/models/questionsExemplos.dart';
+import 'package:quiz/models/quiz_logic.dart';
+import 'package:quiz/view/score_sceen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -11,50 +12,21 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   List<Icon> scoreIcons = [];
-  List<Questions> questions = [
-    Questions(
-        questionText: "A teoria da relatividade foi proposta por Isaac Newton",
-        questionAnswer: false),
-    Questions(
-        questionText: "A inteligência artificial pode sentir emoções",
-        questionAnswer: false),
-    Questions(
-        questionText:
-            "A programação em lógica difusa é uma abordagem para resolver problemas complexos",
-        questionAnswer: true),
-    Questions(
-        questionText:
-            "A quantidade de números irracionais é maior do que os números racionais",
-        questionAnswer: true),
-    Questions(
-        questionText: "A revolução industrial teve início no século XVIII",
-        questionAnswer: true),
-    Questions(
-        questionText:
-            "A energia escura é responsável pela expansão acelerada do universo",
-        questionAnswer: true),
-    Questions(
-        questionText:
-            "O ácido desoxirribonucleico (DNA) está presente apenas em células animais",
-        questionAnswer: false),
-    Questions(
-        questionText:
-            "O método científico é uma abordagem infalível para obter conhecimento absoluto",
-        questionAnswer: false),
-    Questions(
-        questionText:
-            "A teoria do caos afirma que sistemas complexos são totalmente previsíveis",
-        questionAnswer: false),
-    Questions(
-        questionText: "O número pi (π) é uma constante irracional",
-        questionAnswer: true),
-  ];
+  QuizLogic quizLogic = QuizLogic(questions: listQuestions);
 
-  int i = 0;
+  List<int> questions = [];
+  int count = 0;
+  int numberQuestion = 0;
   int score = 0;
 
+  void initializeQuiz() {
+    questions = quizLogic.randomQuestion();
+    numberQuestion = questions[count];
+  }
+
   void processAnswer(bool userAnswer) {
-    bool isCorrect = questions[i].questionAnswer == userAnswer;
+    bool isCorrect =
+        quizLogic.questions[numberQuestion].questionAnswer == userAnswer;
 
     setState(() {
       scoreIcons.add(
@@ -68,7 +40,7 @@ class _QuizScreenState extends State<QuizScreen> {
         score++;
       }
 
-      if (i == questions.length - 1) {
+      if (count == questions.length - 1) {
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -77,8 +49,15 @@ class _QuizScreenState extends State<QuizScreen> {
         return;
       }
 
-      i++;
+      count++;
+      numberQuestion = questions[count];
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initializeQuiz();
   }
 
   @override
@@ -92,7 +71,7 @@ class _QuizScreenState extends State<QuizScreen> {
             Expanded(
               flex: 6,
               child: Center(
-                child: Text(questions[i].questionText,
+                child: Text(quizLogic.questions[numberQuestion].questionText,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.white,
@@ -106,11 +85,11 @@ class _QuizScreenState extends State<QuizScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: ElevatedButton(
                   onPressed: () => processAnswer(true),
-                  child: const Text('True'),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                    onPrimary: Colors.white,
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
                   ),
+                  child: const Text('True'),
                 ),
               ),
             ),
@@ -120,11 +99,11 @@ class _QuizScreenState extends State<QuizScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: ElevatedButton(
                     onPressed: () => processAnswer(false),
-                    child: const Text('False'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.redAccent,
-                      onPrimary: Colors.white,
+                      backgroundColor: Colors.redAccent,
+                      foregroundColor: Colors.white,
                     ),
+                    child: const Text('False'),
                   ),
                 )),
             Row(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/models/result_card.dart';
+import 'package:quiz/models/score_card.dart';
 
 class ResultScreen extends StatefulWidget {
   final int score;
@@ -16,7 +16,7 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _ResultScreenState extends State<ResultScreen> {
-  Color determineColor() {
+  Color isWin() {
     double numericScore = double.parse(
         widget.score.toString()); // Convert score to a numerical type
     if (numericScore >= (60 * widget.totalQuestions) / 100) {
@@ -30,11 +30,9 @@ class _ResultScreenState extends State<ResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: ResultCard(
-          score: widget.score,
-          cor: determineColor(),
-        ),
+      body: ResultCard(
+        score: widget.score,
+        color: isWin(),
       ),
     );
   }
