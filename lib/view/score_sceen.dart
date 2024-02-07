@@ -18,7 +18,7 @@ class ResultScreen extends StatefulWidget {
 class _ResultScreenState extends State<ResultScreen> {
   Color isWin() {
     double numericScore = double.parse(
-        widget.score.toString()); // Convert score to a numerical type
+        widget.score.toString()); 
     if (numericScore >= (60 * widget.totalQuestions) / 100) {
       return Colors.green;
     } else {
