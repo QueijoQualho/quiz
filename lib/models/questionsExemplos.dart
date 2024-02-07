@@ -42,4 +42,83 @@ List<Questions> listQuestions = [
   Questions(questionText: "Os elefantes podem pular", questionAnswer: false),
   Questions(questionText: "A água tem sabor", questionAnswer: false),
   Questions(questionText: "Os tomates são frutas", questionAnswer: true),
+  Questions(questionText: "Os pingüins podem nadar", questionAnswer: true),
+  Questions(
+      questionText: "O iPhone foi lançado pela primeira vez em 2005",
+      questionAnswer: false),
+  Questions(questionText: "As aranhas têm cinco patas", questionAnswer: false),
+  Questions(
+      questionText: "A Torre Eiffel está localizada em Londres",
+      questionAnswer: false),
+  Questions(
+      questionText:
+          "O mel é produzido pelas abelhas a partir do néctar das flores",
+      questionAnswer: true),
+  Questions(
+      questionText: "O Monte Everest é a montanha mais alta do mundo",
+      questionAnswer: true),
+  Questions(
+      questionText: "Os seres humanos têm cinco sentidos",
+      questionAnswer: false),
+  Questions(questionText: "A Lua orbita a Terra", questionAnswer: true),
+  Questions(
+      questionText: "O fogo é um estado da matéria", questionAnswer: false),
+  Questions(
+      questionText: "O diamante é a pedra preciosa mais dura",
+      questionAnswer: true),
+  Questions(
+      questionText: "O Brasil é o maior país da América do Sul",
+      questionAnswer: true),
+  Questions(
+      questionText: "A música 'Shape of You' é de Ed Sheeran",
+      questionAnswer: true),
+  Questions(questionText: "As formigas dormem", questionAnswer: false),
+  Questions(questionText: "O Sol é uma estrela", questionAnswer: true),
+  Questions(
+      questionText:
+          "O DNA é composto por quatro bases: adenina, citosina, guanina e timina",
+      questionAnswer: true),
+  Questions(
+      questionText: "O idioma mais falado no mundo é o mandarim",
+      questionAnswer: true),
+  Questions(questionText: "Os tubarões são mamíferos", questionAnswer: false),
+  Questions(
+      questionText: "A Ilha de Páscoa pertence ao Chile", questionAnswer: true),
+  Questions(
+      questionText: "Os pinguins vivem apenas no Polo Sul",
+      questionAnswer: false),
+  Questions(
+      questionText: "A tartaruga pode sair de sua casca",
+      questionAnswer: false),
+  Questions(
+      questionText: "O rio Amazonas é o mais longo do mundo",
+      questionAnswer: true),
+  Questions(questionText: "Os golfinhos são peixes", questionAnswer: false),
+  Questions(
+      questionText: "O aço inoxidável é magnético", questionAnswer: false),
+  Questions(
+      questionText: "A velocidade da luz é mais rápida que a velocidade do som",
+      questionAnswer: true),
+  Questions(
+      questionText: "Os camelos armazenam água em suas corcovas",
+      questionAnswer: false),
+  Questions(
+      questionText: "A Mona Lisa foi pintada por Vincent van Gogh",
+      questionAnswer: false),
+  Questions(
+      questionText: "O código de barras foi inventado na década de 1940",
+      questionAnswer: false),
+  Questions(
+      questionText:
+          "O Monte Rushmore apresenta esculpido os rostos de presidentes dos EUA",
+      questionAnswer: true),
+  Questions(
+      questionText: "O planeta Marte é conhecido como o 'Planeta Vermelho'",
+      questionAnswer: true),
+  Questions(
+      questionText: "O que Poggers? Justifique a resposta",
+      questionAnswer: true),
+  Questions(
+      questionText: "O que Noggers? Justifique a resposta",
+      questionAnswer: true),
 ];
